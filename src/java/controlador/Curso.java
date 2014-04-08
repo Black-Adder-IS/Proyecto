@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controlador del curso
  */
 
 package controlador;
@@ -20,7 +18,8 @@ import modelo.CursoBD;
 
 /**
  *
- * @author sainoba
+ * @author Marco Aurelio Nila Fonseca
+ * @version 1.0
  */
 @WebServlet(name = "Curso", urlPatterns = {"/Curso"})
 public class Curso extends HttpServlet {
@@ -44,7 +43,7 @@ public class Curso extends HttpServlet {
         } catch (NumberFormatException e) {
             return;
         }
-        CursoBD curso;
+        CursoBD cursoBD;
         String filtro;
         switch(tipo){
             //Cuenta número de cursos para poder paginar
@@ -52,9 +51,9 @@ public class Curso extends HttpServlet {
                 filtro = request.getParameter("filtro");
                 int cuantos;
                 filtro = filtro == null ? "" : filtro.trim();
-                curso = new CursoBD();
+                cursoBD = new CursoBD();
                 try {
-                    cuantos = curso.cuenta_cursos(filtro);
+                    cuantos = cursoBD.cuenta_cursos(filtro);
                 } catch (SQLException ex) {
                     System.out.println(ex);
                     try (PrintWriter out = response.getWriter()) {
@@ -81,9 +80,9 @@ public class Curso extends HttpServlet {
                 }
                 filtro = filtro == null ? "" : filtro.trim();
                 System.out.println("Parámetro: " + filtro);
-                curso = new CursoBD();
+                cursoBD = new CursoBD();
                 try {
-                    cursos = curso.obten_cursos(filtro, pagina, cantidad);
+                    cursos = cursoBD.obten_cursos(filtro, pagina, cantidad);
                 } catch (SQLException ex) {
                     System.out.println(ex);
                     try (PrintWriter out = response.getWriter()) {
@@ -96,6 +95,21 @@ public class Curso extends HttpServlet {
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(json);
+                }
+                break;
+            //Solicitar curso
+            case 3:
+                String estudiante = request.getParameter("estudiante");
+                String curso_str = request.getParameter("curso");
+                int curso = Integer.parseInt(curso_str);
+                boolean exito = false;
+                cursoBD = new CursoBD();
+                try {
+                    exito = cursoBD.solicitar_curso(estudiante, curso);
+                } catch (SQLException e) {
+                }
+                try (PrintWriter out = response.getWriter()) {
+                    out.println("" + exito);
                 }
         }
     }
