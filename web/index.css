@@ -1,0 +1,22 @@
+body {
+	background-color: #fffcf5;
+}
+
+#slogan {
+	font-family: 'Maven Pro', sans-serif;
+	font-size: 36px;
+}
+
+#foto img {
+   position: relative;
+   width: 100%; /* for IE 6 */
+   max-height: 500px;
+}
+
+.navbar {
+	left: 80%;
+}
+
+table tr:nth-of-type(even) {
+    background-color: transparent !important;
+}
