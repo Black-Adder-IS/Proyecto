@@ -36,8 +36,21 @@ public class Pagina_Profesor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String id = request.getParameter("id");
+            String id_str = request.getParameter("id");
             ProfesorBD profesorBD = new ProfesorBD();
+            int id;
+            Profesor_contenedor profesor;
+            try {
+                id = Integer.parseInt(id_str.trim());
+                profesor = profesorBD.obten_profesor(id);
+                if (profesor == null) {
+                    throw new Exception();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+                return;
+            }
+            
             
 out.println("<!doctype html>");
 out.println("<html class='no-js' lang='en'>");
@@ -48,10 +61,10 @@ out.println("  <title>Escuela de Inglés | Bienvenido</title>");
 out.println("  <link rel='stylesheet' href='css/foundation.css' />");
 out.println("  <link rel='stylesheet' href='css/index.css' />");
 out.println("  <link rel='stylesheet' href='css/maestro.css' />");
+out.println("  <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>");
 out.println("  <script src='js/vendor/modernizr.js'></script>");
 out.println("  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->");
 out.println("  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>");
-out.println("  <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>");
 out.println("  <script src='//cdn.sublimevideo.net/js/x9bc50rn.js' type='text/javascript'></script>");
 out.println("</head>");
 out.println("<body>");
@@ -196,11 +209,11 @@ out.println("    </div>");
 out.println("  </div>");
 out.println("  <div class='row'>");
 out.println("    <div class='small-12 large-12 columns text-center'>");
-out.println("      <h1>Pancho el Golpeado López</h1>");
+out.println("      <h1>" + profesor.nombre + "</h1>");
 out.println("      <div>");
-out.println("        <span class='secondary label'>Cursos finalizados: 0</span>");
-out.println("        <span class='secondary label'>Cursos en progreso: 2</span>");
-out.println("        <span class='secondary label'>Cursos disponilbes: 4</span>");
+out.println("        <span class='secondary label'>Cursos finalizados: " + profesor.cursos_terminado + "</span>");
+out.println("        <span class='secondary label'>Cursos en progreso: " + profesor.cursos_cursando + "</span>");
+out.println("        <span class='secondary label'>Cursos disponilbes: " + profesor.cursos_espera + "</span>");
 out.println("      </div>");
 out.println("<video id='a240e92d' class='sublime' poster='https://cdn.sublimevideo.net/vpa/ms_800.jpg' width='640' height='360' title='Midnight Sun' data-uid='a240e92d' data-autoresize='fit' preload='none'>");
 out.println("  <source src='https://cdn.sublimevideo.net/vpa/ms_360p.mp4' />");
@@ -222,26 +235,9 @@ out.println("            <th class='text-center' width='20%'>Solicitar</th>");
 out.println("          </tr>");
 out.println("        </thead>");
 out.println("        <tbody>");
-out.println("          <tr>");
-out.println("            <td>Principiante</td>");
-out.println("            <td>10:30 - 11:40</td>");
-out.println("            <td><a href='#' class='button success radius tiny'>Solicitar</a></td>");
-out.println("          </tr>");
-out.println("          <tr>");
-out.println("            <td>Intermedio</td>");
-out.println("            <td>13:00 - 14:15</td>");
-out.println("            <td><a href='#' class='button success radius tiny'>Solicitar</a></td>");
-out.println("          </tr>");
-out.println("          <tr>");
-out.println("            <td>Avanzado</td>");
-out.println("            <td>17:00 - 20:00</td>");
-out.println("            <td><a href='#' class='button success radius tiny'>Solicitar</a></td>");
-out.println("          </tr>");
-out.println("          <tr>");
-out.println("            <td>Conversación</td>");
-out.println("            <td>15:00 - 15:15</td>");
-out.println("            <td><a href='#' class='button success radius tiny'>Solicitar</a></td>");
-out.println("          </tr>");
+            for (String curso : profesor.cursos) {
+                out.println(curso);
+            }
 out.println("        </tbody>");
 out.println("      </table>");
 out.println("    </div>");
@@ -249,13 +245,17 @@ out.println("  </div>");
 out.println("  <div class='row'>");
 out.println("    <div class='small-12 large-12 columns text-center'>");
 out.println("      <div class='panel radius'>");
-out.println("        Si te interesa puedes descargas la constancia de acreditación del maestro: <a href='#'>constacia.pdf</a>");
+            if (profesor.certificado_url == null || profesor.certificado_url.trim().equals("")) {
+out.println("        El profesor todavía no cuenta con una constancia por lo que no puede ofrecer cursos");                
+            }else{
+out.println("        Si te interesa puedes descargas la constancia de acreditación del maestro: <a href='" + profesor.certificado_url +"'>constacia.pdf</a>");
+            }
 out.println("      </div>");
 out.println("    </div>");
 out.println("  </div>");
 out.println("");
-out.println("  <script src='../../js/vendor/jquery.js'></script>");
-out.println("  <script src='../../js/foundation.min.js'></script>");
+out.println("  <script src='js/vendor/jquery.js'></script>");
+out.println("  <script src='js/foundation.min.js'></script>");
 out.println("  <script>");
 out.println("    $(document).foundation();");
 out.println("  </script>");
