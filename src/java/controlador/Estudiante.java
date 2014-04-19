@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controlado de Estudiante
  */
 
 package controlador;
@@ -21,7 +19,8 @@ import modelo.EstudianteBD;
 
 /**
  *
- * @author sainoba
+ * @author Marco Aurelio Nila Fonseca
+ * @version 1.0
  */
 @WebServlet(name = "Estudiante", urlPatterns = {"/Estudiante"})
 public class Estudiante extends HttpServlet {
@@ -46,6 +45,7 @@ public class Estudiante extends HttpServlet {
             return;
         }
         switch(tipo){
+            //Iniciar sesión
             case 0 :
                 String id = request.getParameter("id");
                 String contrasena = request.getParameter("contrasena");
@@ -73,19 +73,6 @@ public class Estudiante extends HttpServlet {
             default:
                 return;
         }
-
-        //try (PrintWriter out = response.getWriter()) {
-        //    /* TODO output your page here. You may use following sample code. */
-        //    out.println("<!DOCTYPE html>");
-        //    out.println("<html>");
-        //    out.println("<head>");
-        //    out.println("<title>Servlet Profesor</title>");            
-        //    out.println("</head>");
-        //    out.println("<body>");
-        //    out.println("<h1>Servlet Profesor at " + request.getContextPath() + "</h1>");
-        //    out.println("</body>");
-        //    out.println("</html>");
-        //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

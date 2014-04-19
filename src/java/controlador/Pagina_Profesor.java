@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Página individual para cada profesor
  */
 
 package controlador;
@@ -17,7 +15,8 @@ import modelo.ProfesorBD;
 
 /**
  *
- * @author sainoba
+ * @author Marco Aurelio Nila Fonseca
+ * @version 1.0
  */
 @WebServlet(name = "Pagina_Profesor", urlPatterns = {"/profesor"})
 public class Pagina_Profesor extends HttpServlet {
@@ -60,40 +59,48 @@ out.println("  <meta name='viewport' content='width=device-width, initial-scale=
 out.println("  <title>Escuela de Inglés | Bienvenido</title>");
 out.println("  <link rel='stylesheet' href='css/foundation.css' />");
 out.println("  <link rel='stylesheet' href='css/index.css' />");
-out.println("  <link rel='stylesheet' href='css/maestro.css' />");
 out.println("  <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>");
 out.println("  <script src='js/vendor/modernizr.js'></script>");
 out.println("  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->");
 out.println("  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>");
+out.println("  <script src='js/solicitar_curso.js'></script>");
+out.println("  <script src='js/generador_menu_index.js'></script> ");
+out.println("  <script src='js/inicio_sesion.js'></script></script> ");
 out.println("  <script src='//cdn.sublimevideo.net/js/x9bc50rn.js' type='text/javascript'></script>");
 out.println("</head>");
 out.println("<body>");
-out.println("  <div id='iniciarModal' class='reveal-modal' data-reveal>");
-out.println("    <h2>Inicio de sesión</h2>");
-out.println("    <form>");
-out.println("      <div class='row'>");
-out.println("        <div class='large-4 columns'>");
-out.println("          <label>Correo");
-out.println("            <input type='text' placeholder='large-4.columns' />");
+out.println("<div id='iniciarModal' class='reveal-modal' data-reveal>");
+out.println("  <h2>Inicio de sesión</h2>");
+out.println("  <form data-abide='ajax'>");
+out.println("    <div class='row'>");
+out.println("      <div class='large-4 columns'>");
+out.println("        <div class='input-wrapper'>");
+out.println("          <label>Correo <small>requerido</small>");
+out.println("            <input id='id_text' type='email' required>");
 out.println("          </label>");
-out.println("        </div>");
-out.println("        <div class='large-4 columns'>");
-out.println("          <label>Contraseña");
-out.println("            <input type='text' placeholder='large-4.columns' />");
-out.println("          </label>");
-out.println("        </div>");
-out.println("        <div class='large-4 columns'>");
-out.println("          <label>Iniciar sesión como:</label>");
-out.println("          <input type='radio' name='pokemon' value='Red' id='pokemonRed'><label for='pokemonRed'>Alumno</label>");
-out.println("          <input type='radio' name='pokemon' value='Blue' id='pokemonBlue'><label for='pokemonBlue'>Maestro</label>");
+out.println("          <small class='error'>Correo inválido</small>");
 out.println("        </div>");
 out.println("      </div>");
-out.println("      <div class='text-center'>");
-out.println("        <a href='#' class='button [tiny small large]'>Entrar</a>");
+out.println("      <div class='large-4 columns'>");
+out.println("        <div class='input-wrapper'>");
+out.println("          <label>Constraseña <small>requerida</small>");
+out.println("              <input id='contrasena_text' type='password' required pattern='_*'>");
+out.println("        </label>");
+out.println("          <small class='error'>Contraseña inválida</small>");
+out.println("        </div>");
 out.println("      </div>");
-out.println("    </form>");
-out.println("    <a class='close-reveal-modal'>&#215;</a>");
-out.println("  </div>");
+out.println("      <div class='large-4 columns'>");
+out.println("        <label>Iniciar sesión como:</label>");
+out.println("          <input type='radio' name='sesion_tipo' id='estudiante_radio' checked='checked'><label for='estudiante_radio'>Estudian</label>");
+out.println("        <input type='radio' name='sesion_tipo' id='profesor_radio'><label for='profesor_radio'>Profesor</label>");
+out.println("      </div>");
+out.println("    </div>");
+out.println("    <div class='text-center'>");
+out.println("        <a id='iniciar_sesion_btn' href='#' class='button small'>Entrar</a>");
+out.println("    </div>");
+out.println("  </form>");
+out.println("  <a class='close-reveal-modal'>&#215;</a>");
+out.println("</div>");
 out.println("  <div id='myModal' class='reveal-modal' data-reveal>");
 out.println("    <h2>Elige el tipo de registro</h2>");
 out.println("    <p class='lead'>Puedes elegir entre maestro y alumno</p>");
@@ -192,9 +199,9 @@ out.println("  <div class='row'>");
 out.println("    <div class='small-8 large-10 columns'>");
 out.println("      <img src='images/logo.png'>");
 out.println("    </div>");
-out.println("    <div class='small-4 large-2 columns navbar fixed sticky'>");
-out.println("      <a href='#' data-dropdown='drop' class='[tiny small medium large] [secondary alert success] [radius round] button dropdown'>Menú</a><br>");
-out.println("      <ul id='drop' data-dropdown-content class='f-dropdown'>");
+out.println("    <div class='small-4 large-2 columns navbar'>");
+out.println("      <a href='#' data-dropdown='menu' class='[tiny small medium large] [secondary alert success] [radius round] button dropdown'>Menú</a><br>");
+out.println("      <ul id='menu' data-dropdown-content class='f-dropdown'>");
 out.println("        <li class='active'><a href='../../index.html'>Inicio</a></li>");
 out.println("        <li><a href='#' data-reveal-id='myModal' data-reveal>Registrar</a></li>");
 out.println("        <li><a href='../horarios.html'>Ver Horarios</a></li>");
@@ -223,6 +230,7 @@ out.println("  <source src='https://cdn.sublimevideo.net/vpa/ms_720p.webm' data-
 out.println("</video>");
 out.println("    </div>");
 out.println("  </div>");
+out.println("  <br>");
 out.println("  <div class='row'>");
 out.println("    <div class='small-12 large-12 columns text-center'>");
 out.println("      <span class='primary label'>Cursos disponibles</span>");
@@ -261,34 +269,6 @@ out.println("    $(document).foundation();");
 out.println("  </script>");
 out.println("</body>");
 out.println("</html>");
-
-            
-            //out.println("<!DOCTYPE html>");
-            //out.println("<html>");
-            //out.println("<head>");
-            //out.println("<title>Servlet Pagina_Profesor</title>");            
-            //out.println("</head>");
-            //out.println("<body>");
-            //out.println("<h1>Servlet Pagina_Profesor at " + request.getContextPath() + "</h1>");
-            //out.println("</body>");
-            //out.println("</html>");
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         }
     }

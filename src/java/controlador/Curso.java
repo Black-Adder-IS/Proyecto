@@ -65,7 +65,7 @@ public class Curso extends HttpServlet {
                     out.println(cuantos);
                 }
                 return;
-            //Profesores para mostrar
+            //Cursos a mostrar
             case 2:
                 ArrayList<String> cursos;
                 filtro = request.getParameter("filtro");

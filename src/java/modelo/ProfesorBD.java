@@ -1,11 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Maneja todas las peticiones a la base datos relacionadas con la tabla de profesores
  */
 
 package modelo;
 
+import controlador.Profesor_contenedor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,10 +14,14 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author sainoba
+ * @author Marco Aurelio Nila Fonseca
+ * @version 1.0
  */
 public class ProfesorBD extends ConexionBD{
     
+    /**
+     * Constructor de la Clase
+     */
     public ProfesorBD(){
         super();
     }
@@ -49,6 +52,12 @@ public class ProfesorBD extends ConexionBD{
         return encontrado;
     }
     
+    /**
+     * Cuenta el número de profesores que tienen cursos con cierto filtro
+     * @param filtro es el tipo de curso
+     * @return el número de profes
+     * @throws SQLException 
+     */
     public int cuenta_profesores(String filtro) throws SQLException{
         int cantidad = 0;
         String consulta ="SELECT count(profesor_id) AS cantidad FROM " +
@@ -77,6 +86,14 @@ public class ProfesorBD extends ConexionBD{
         return cantidad;
     }
     
+    /**
+     * Obtiene una lista de profesores que tienen cursos que cumpen con cierto filtro
+     * @param filtro es el tipo de curso
+     * @param pagina el numero de pagina, sirve para paginar los resultados
+     * @param cantidad es la cantidad de profesores que se pide, sirve para paginar los resultados
+     * @return
+     * @throws SQLException 
+     */
     public ArrayList<String> obten_profesores(String filtro, int pagina, int cantidad) throws SQLException{
         ArrayList<String> profesores = new ArrayList<String>();
         String consulta ="SELECT * FROM " +
@@ -110,6 +127,57 @@ public class ProfesorBD extends ConexionBD{
         }
         cierraConexion(conexion);
         return profesores;
+    }
+    
+    /**
+     * Obtienen los datos de un profesor
+     * @param id es el identificado del profesor
+     * @return una estructura con los datos del profesor
+     * @throws SQLException 
+     */
+    public Profesor_contenedor obten_profesor(int id) throws SQLException{
+        ArrayList<String> cursos = new ArrayList<String>();
+        Profesor_contenedor profesor;
+        String consulta ="SELECT * " +
+        "FROM Profesor WHERE profesor_id = " + id +";";
+        System.out.println(consulta);
+        Connection conexion;
+        try {
+            conexion = getConexion();
+        } catch (ClassNotFoundException ex) {
+            throw new SQLException();
+        }
+        ResultSet resultado =  consulta(conexion, consulta);
+        if (resultado == null || !resultado.next()) {
+            return null;
+        }
+        profesor = new Profesor_contenedor();
+        profesor.nombre = resultado.getString("profesor_nombre");
+        profesor.correo = resultado.getString("profesor_correo");
+        profesor.id = id;
+        profesor.certificado_url = resultado.getString("profesor_url_certificado");
+        profesor.video_url = resultado.getString("profesor_url_video");
+        consulta = "SELECT count(*) AS cursos_espera FROM `Escuela`.`Curso` " +
+                "WHERE profesor_correo = \"" + profesor.correo + "\" AND curso_estado = \"Espera\";";
+        resultado =  consulta(conexion, consulta);
+        resultado.next();
+        profesor.cursos_espera = resultado.getInt("cursos_espera");
+        
+        consulta = "SELECT count(*) AS cursos_terminado FROM `Escuela`.`Curso` " +
+                "WHERE profesor_correo = \"" + profesor.correo + "\" AND curso_estado = \"Terminado\";";
+        resultado =  consulta(conexion, consulta);
+        resultado.next();
+        profesor.cursos_terminado = resultado.getInt("cursos_terminado");
+        
+        consulta = "SELECT count(*) AS cursos_cursando FROM `Escuela`.`Curso` " +
+                "WHERE profesor_correo = \"" + profesor.correo + "\" AND curso_estado = \"Cursando\";";
+        resultado =  consulta(conexion, consulta);
+        resultado.next();
+        profesor.cursos_cursando = resultado.getInt("cursos_cursando");
+        cierraConexion(conexion);
+        CursoBD cursoBD = new CursoBD();
+        profesor.cursos = cursoBD.obten_cursos_profesor(profesor.id, profesor.correo);
+        return profesor;
     }
 }
 

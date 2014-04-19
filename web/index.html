@@ -10,29 +10,33 @@
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="js/inicio_sesion.js"></script>
+  <script src="js/generador_menu_index.js"></script>
+
   <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
   <style type="text/css">
     .vjs-default-skin .vjs-control-bar { font-size: 89% }
   </style>
 </head>
 <body>
-    <div id="mensaje" data-alert class="alert-box">
-    <!-- Your content goes here -->
-    <a href="#" class="close">&times;</a>
-  </div>
   <div id="iniciarModal" class="reveal-modal" data-reveal>
     <h2>Inicio de sesión</h2>
-    <form>
+    <form data-abide="ajax">
       <div class="row">
         <div class="large-4 columns">
-          <label>Correo
-              <input id="id_text" type="text" placeholder="" />
-          </label>
+          <div class="input-wrapper">
+            <label>Correo <small>requerido</small>
+              <input id="id_text" type="email" required>
+            </label>
+            <small class="error">Correo inválido</small>
+          </div>
         </div>
         <div class="large-4 columns">
-          <label>Contraseña
-              <input id="contrasena_text" type="text" placeholder="" />
+          <div class="input-wrapper">
+            <label>Constraseña <small>requerida</small>
+                <input id="contrasena_text" type="password" required pattern="_*">
           </label>
+            <small class="error">Contraseña inválida</small>
+          </div>
         </div>
         <div class="large-4 columns">
           <label>Iniciar sesión como:</label>
@@ -41,7 +45,7 @@
         </div>
       </div>
       <div class="text-center">
-          <a id="iniciar_sesion_btn" href="#" class="button [tiny small large]">Entrar</a>
+          <a id="iniciar_sesion_btn" href="#" class="button small">Entrar</a>
       </div>
     </form>
     <a class="close-reveal-modal">&#215;</a>
@@ -168,13 +172,13 @@
     <div class="small-8 large-10 columns">
         <img src="images/logo.png" alt="Logotipo"/>
     </div>
-    <div class="small-4 large-2 columns navbar fixed sticky">
-      <a href="#" data-dropdown="drop" class="[tiny small medium large] [secondary alert success] [radius round] button dropdown">Menú</a><br>
-      <ul id="drop" data-dropdown-content class="f-dropdown">
+    <div class="small-4 large-2 columns navbar">
+      <a href="#" data-dropdown="menu" class="[tiny small medium large] [secondary alert success] [radius round] button dropdown">Menú</a><br>
+      <ul id="menu" data-dropdown-content class="f-dropdown">
         <li class="active"><a href="#">Inicio</a></li>
         <li><a href="#" data-reveal-id="myModal" data-reveal>Registrar</a></li>
         <li><a href="html/horarios.html">Ver Horarios</a></li>
-        <li><a href="html/maestros.html">Ver Maestros</a></li>
+        <li><a href="html/profesores.html">Ver Maestros</a></li>
         <li></br></li>
 
         <li><a href="#" data-reveal-id="iniciarModal" data-reveal>Iniciar Sesión</a></li>
@@ -192,7 +196,7 @@
 
   <div class="row">
     <div class="small-12 large-12 columns">
-      <p class="text-center" id="slogan">El sitio que une alumnos y maestros.</p>
+      <p class="text-center" id="slogan">El sitio que une a profesores y estudiantes</p>
     </div>
   </div>
   <div class="row" data-equalizer>
