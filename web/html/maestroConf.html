@@ -1,0 +1,466 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escuela de Inglés | Bienvenido</title>
+  <link rel="stylesheet" href="../css/foundation.css" />
+  <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../css/profesores.css" />
+  <script src="../../js/vendor/modernizr.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="iniciarModal" class="reveal-modal" data-reveal>
+    <h2>Inicio de sesión</h2>
+    <form>
+      <div class="row">
+        <div class="large-4 columns">
+          <label>Correo
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Contraseña
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Iniciar sesión como:</label>
+          <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Alumno</label>
+          <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Maestro</label>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="#" class="button [tiny small large]">Entrar</a>
+      </div>
+    </form>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="myModal" class="reveal-modal" data-reveal>
+    <h2>Elige el tipo de registro</h2>
+    <p class="lead">Puedes elegir entre maestro y alumno</p>
+    <div class="panel">
+      <h5>Aprende</h5>
+      <p>Selecciona el nivel de curso que quieras tomar con el maestro que te agrade.</p>
+      <a href="#" class="small button"  data-reveal-id="registroAlumnoModal" data-reveal>Aprender</a>
+    </div>
+    <div class="panel">
+      <h5>Enseña</h5>
+      <p>Ofrece cursos eligiendo los horarios que quieras y a alumnos de tu agrado.</p>
+      <a href="#" class="small button" data-reveal-id="registroMaestroModal" data-reveal>Enseñar</a>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="registroAlumnoModal" class="reveal-modal" data-reveal>
+    <h2>Registro de Alumno</h2>
+    <form>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Nombre
+            <input type="text" placeholder="large-12.columns" />
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-4 columns">
+          <label>Correo
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Constraseña
+            <input type="text" placeholder="min. 6 caracteres" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Nivel de Inglés
+            <select>
+              <option value="husker">Principiante</option>
+              <option value="starbuck">Intermedio</option>
+              <option value="hotdog">Avanzado</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns text-center">
+          <a href="#" class="button">Registrar</a>
+        </div>
+      </div>
+    </form>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="registroMaestroModal" class="reveal-modal" data-reveal>
+    <h2>Registro de Maestro</h2>
+    <form>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Nombre
+            <input type="text" placeholder="large-12.columns" />
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>Correo
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-6 columns">
+          <label>Constraseña
+            <input type="text" placeholder="min. 6 caracteres" />
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns text-center">
+          <div class="panel">
+            <p>Despúes del registro debes subir un video de 1 minuto presentandote y una constancia antes de poder ofrecer cursos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns text-center">
+          <a href="#" class="button">Registrar</a>
+        </div>
+      </div>
+    </form>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="borrarModal" class="reveal-modal" data-reveal>
+    <h2>¿Estás seguro que quieres borrar tu cuenta?</h2>
+    <p class="lead">Toda tú información será borrada y no podrás recuperarla</p>
+    <div class="text-center">
+      <a href="#" class="button">Sí, borrar</a>
+      <a href="#" class="button">No, cancelar</a>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div class="row">
+    <div class="small-8 large-10 columns">
+      <img src="../images/logo.png">
+    </div>
+    <div class="small-4 large-2 columns navbar fixed sticky">
+      <a href="#" data-dropdown="drop" class="[tiny small medium large] [secondary alert success] [radius round] button dropdown">Menú</a><br>
+      <ul id="drop" data-dropdown-content class="f-dropdown">
+        <li class="active"><a href="../index.html">Inicio</a></li>
+        <li><a href="#" data-reveal-id="myModal" data-reveal>Registrar</a></li>
+        <li><a href="horarios.html">Ver Horarios</a></li>
+        <li><a href="profesores.html">Ver Maestros</a></li>
+        <li></br></li>
+        <li><a href="#" data-reveal-id="iniciarModal" data-reveal>Iniciar Sesión</a></li>
+        <li><a href="alumnoConf.html">Ver Cuenta(Alumno)</a></li>
+        <li><a href="#">Ver Cuenta(Maestro)</a></li>
+        <li><a href="#">Salir</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 large-12 columns text-center">
+      <h1>Pamelia Marisela Zaahira Annabella</h1>
+      <dl class="tabs vertical" data-tab>
+        <dd class="active"><a href="#panel1a">Ofrecer Curso</a></dd>
+        <dd><a href="#panel2a">Notificaciones pendientes</a></dd>
+        <dd><a href="#panel3a">Cursos en espera</a></dd>
+        <dd><a href="#panel4a">Cursos actuales</a></dd>
+        <dd><a href="#panel5a">Cursos finalizados</a></dd>
+        <dd><a href="#panel6a">Configuración </a></dd>
+      </dl>
+      <div class="tabs-content vertical">
+        <div class="content active" id="panel1a">
+          <form>
+            <div class="row">
+              <div class="large-4 columns">
+                <label>Hora inicio
+                  <select>
+                    <option value="husker">11:30</option>
+                  </select>
+                </label>
+              </div>
+              <div class="large-4 columns">
+                <label>Hora final
+                  <select>
+                    <option value="husker">13:00</option>
+                  </select>
+                </label>
+              </div>
+              <div class="large-4 columns">
+                <label>Tipo
+                  <select>
+                    <option value="husker">Principiante</option>
+                    <option value="starbuck">Intermedio</option>
+                    <option value="hotdog">Avanzado</option>
+                    <option value="hotdog">Conversación</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns text-center">
+                <a href="#" class="button expand">Crear Curso</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="content" id="panel2a">
+          <table>
+            <thead>
+              <tr>
+                <th width="40%">Alumno</th>
+                <th width="20%">Tipo</th>
+                <th width="20%">Horario</th>
+                <th width="20%">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pancho el Golpeado López</td>
+                <td>Principiante</td>
+                <td>5:00 - 6:00</td>
+                <td>
+                  <a href="#" data-dropdown="drop_1" class="button dropdown tiny">Acción</a><br>
+                  <ul id="drop_1" data-dropdown-content class="f-dropdown">
+                    <li><a href="#">Aceptar</a></li>
+                    <li><a href="#">Rechazar</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Don Ramón Tomatón</td>
+                <td>Intermedio</td>
+                <td>10:25 - 15:00</td>
+                <td>
+                  <a href="#" data-dropdown="drop_2" class="button dropdown tiny">Acción</a><br>
+                  <ul id="drop_2" data-dropdown-content class="f-dropdown">
+                    <li><a href="#">Aceptar</a></li>
+                    <li><a href="#">Rechazar</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Tighearnán Gafar Werner Chlodochar</td>
+                <td>Avanzado</td>
+                <td>16:50 - 20:30</td>
+                <td>
+                  <a href="#" data-dropdown="drop_2" class="button dropdown tiny">Acción</a><br>
+                  <ul id="drop_2" data-dropdown-content class="f-dropdown">
+                    <li><a href="#">Aceptar</a></li>
+                    <li><a href="#">Rechazar</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Pamelia Marisela Zaahira Annabella</td>
+                <td>Conversación</td>
+                <td>14:00 - 15:20</td>
+                <td>
+                  <a href="#" data-dropdown="drop_3" class="button dropdown tiny">Acción</a><br>
+                  <ul id="drop_3" data-dropdown-content class="f-dropdown">
+                    <li><a href="#">Aceptar</a></li>
+                    <li><a href="#">Rechazar</a></li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content" id="panel3a">
+          <table>
+            <thead>
+              <tr>
+                <th width="40%">Tipo</th>
+                <th width="30%">Horario</th>
+                <th width="30%">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Principiante</td>
+                <td>5:00 - 6:00</td>
+                <td>
+                  <a href="#" class="button tiny alert">Eliminar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Intermedio</td>
+                <td>10:25 - 15:00</td>
+                <td>
+                  <a href="#" class="button tiny alert">Eliminar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Avanzado</td>
+                <td>16:50 - 20:30</td>
+                <td>
+                  <a href="#" class="button tiny alert">Eliminar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Conversación</td>
+                <td>14:00 - 15:20</td>
+                <td>
+                  <a href="#" class="button tiny alert">Eliminar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content" id="panel4a">
+          <table>
+            <thead>
+              <tr>
+                <th width="40%">Alumno</th>
+                <th width="20%">Tipo</th>
+                <th width="20%">Horario</th>
+                <th width="20%">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pancho el Golpeado López</td>
+                <td>Principiante</td>
+                <td>5:00 - 6:00</td>
+                <td>
+                  <a href="#" class="button tiny">Calificar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Don Ramón Tomatón</td>
+                <td>Intermedio</td>
+                <td>10:25 - 15:00</td>
+                <td>
+                  <a href="#" class="button tiny">Calificar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Tighearnán Gafar Werner Chlodochar</td>
+                <td>Avanzado</td>
+                <td>16:50 - 20:30</td>
+                <td>
+                  <a href="#" class="button tiny">Calificar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Pamelia Marisela Zaahira Annabella</td>
+                <td>Conversación</td>
+                <td>14:00 - 15:20</td>
+                <td>
+                  <a href="#" class="button tiny">Calificar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content" id="panel5a">
+          <table>
+            <thead>
+              <tr>
+                <th width="40%">Alumno</th>
+                <th width="20%">Tipo</th>
+                <th width="20%">Calificación</th>
+                <th width="20%">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="maestros/1.html">Pancho el Golpeado López</a></td>
+                <td>Principiante</td>
+                <td>5</td>
+                <td>
+                  <a href="#" data-dropdown="drop1" class="button alert radius tiny">Nota</a>
+                  <div id="drop1" data-dropdown-content class="f-dropdown content">
+                    <p>Reprobado por burro</p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><a href="maestros/2.html">Don Ramón Tomatón</a></td>
+                <td>Intermedio</td>
+                <td>10</td>
+                <td><a href="#" class="button success radius tiny">Descargar</a></td>
+              </tr>
+              <tr>
+                <td><a href="maestros/3.html">Tighearnán Gafar Werner Chlodochar</a></td>
+                <td>Avanzado</td>
+                <td>6</td>
+                <td><a href="#" class="button success radius tiny">Descargar</a></td>
+              </tr>
+              <tr>
+                <td><a href="maestros/4.html">Pamelia Marisela Zaahira Annabella</a></td>
+                <td>Conversación</td>
+                <td>4</td>
+                <td>
+                  <a href="#" data-dropdown="drop2" class="button alert radius tiny">Nota</a>
+                  <div id="drop2" data-dropdown-content class="f-dropdown content">
+                    <p>Reprobado por burro</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content" id="panel6a">
+          <div>
+          <form>
+            <div class="row">
+              <div class="large-12 columns">
+                <label>Nombre
+                  <input type="text" placeholder="large-12.columns" />
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-4 columns">
+                <label>Correo
+                  <input type="text" placeholder="large-4.columns" />
+                </label>
+              </div>
+              <div class="large-4 columns">
+                <label>Constraseña
+                  <input type="text" placeholder="min. 6 caracteres" />
+                </label>
+              </div>
+              <div class="large-4 columns">
+                <label>Nivel de Inglés
+                  <select>
+                    <option value="husker">Principiante</option>
+                    <option value="starbuck">Intermedio</option>
+                    <option value="hotdog">Avanzado</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-6 columns text-center">
+                <a href="#" class="button success small">Subir video</a>
+              </div>
+              <div class="large-6 columns text-center">
+                <a href="#" class="button success small">Subir constancia</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns text-center">
+                <a href="#" class="button expand">Guardar cambios</a>
+              </div>
+            </div>
+          </form>
+            <a href="#" class="button alert" data-reveal-id="borrarModal" data-reveal>Borrar Cuenta</a>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <script src="../js/vendor/jquery.js"></script>
+  <script src="../js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escuela de Inglés | Bienvenido</title>
+  <link rel="stylesheet" href="../../css/foundation.css" />
+  <link rel="stylesheet" href="../../css/index.css" />
+  <link rel="stylesheet" href="../../css/profesores.css" />
+  <script src="../../js/vendor/modernizr.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+  <script src="http://jwpsrv.com/library/DnDOQpy8EeOzIyIACmOLpg.js"></script>
+</head>
+<body>
+  <div id="iniciarModal" class="reveal-modal" data-reveal>
+    <h2>Inicio de sesión</h2>
+    <form>
+      <div class="row">
+        <div class="large-4 columns">
+          <label>Correo
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Contraseña
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Iniciar sesión como:</label>
+          <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Alumno</label>
+          <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Maestro</label>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="#" class="button [tiny small large]">Entrar</a>
+      </div>
+    </form>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="myModal" class="reveal-modal" data-reveal>
+    <h2>Elige el tipo de registro</h2>
+    <p class="lead">Puedes elegir entre maestro y alumno</p>
+    <div class="panel">
+      <h5>Aprende</h5>
+      <p>Selecciona el nivel de curso que quieras tomar con el maestro que te agrade.</p>
+      <a href="#" class="small button"  data-reveal-id="registroAlumnoModal" data-reveal>Aprender</a>
+    </div>
+    <div class="panel">
+      <h5>Enseña</h5>
+      <p>Ofrece cursos eligiendo los horarios que quieras y a alumnos de tu agrado.</p>
+      <a href="#" class="small button" data-reveal-id="registroMaestroModal" data-reveal>Enseñar</a>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="registroAlumnoModal" class="reveal-modal" data-reveal>
+    <h2>Registro de Alumno</h2>
+    <form>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Nombre
+            <input type="text" placeholder="large-12.columns" />
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-4 columns">
+          <label>Correo
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Constraseña
+            <input type="text" placeholder="min. 6 caracteres" />
+          </label>
+        </div>
+        <div class="large-4 columns">
+          <label>Nivel de Inglés
+            <select>
+              <option value="husker">Principiante</option>
+              <option value="starbuck">Intermedio</option>
+              <option value="hotdog">Avanzado</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns text-center">
+          <a href="#" class="button">Registrar</a>
+        </div>
+      </div>
+    </form>
+
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+  <div id="registroMaestroModal" class="reveal-modal" data-reveal>
+    <h2>Registro de Maestro</h2>
+    <form>
+      <div class="row">
+        <div class="large-12 columns">
+          <label>Nombre
+            <input type="text" placeholder="large-12.columns" />
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>Correo
+            <input type="text" placeholder="large-4.columns" />
+          </label>
+        </div>
+        <div class="large-6 columns">
+          <label>Constraseña
+            <input type="text" placeholder="min. 6 caracteres" />
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns text-center">
+          <div class="panel">
+            <p>Despúes del registro debes subir un video de 1 minuto presentandote y una constancia antes de poder ofrecer cursos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns text-center">
+          <a href="#" class="button">Registrar</a>
+        </div>
+      </div>
+    </form>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div class="row">
+    <div class="small-8 large-10 columns">
+      <img src="../../images/logo.png">
+    </div>
+    <div class="small-4 large-2 columns navbar fixed sticky">
+      <a href="#" data-dropdown="drop" class="[tiny small medium large] [secondary alert success] [radius round] button dropdown">Menú</a><br>
+      <ul id="drop" data-dropdown-content class="f-dropdown">
+        <li class="active"><a href="../../index.html">Inicio</a></li>
+        <li><a href="#" data-reveal-id="myModal" data-reveal>Registrar</a></li>
+        <li><a href="../horarios.html">Ver Horarios</a></li>
+        <li><a href="../profesores.html">Ver Maestros</a></li>
+        <li></br></li>
+        <li><a href="#" data-reveal-id="iniciarModal" data-reveal>Iniciar Sesión</a></li>
+        <li><a href="../alumnoConf.html">Ver Cuenta(Alumno)</a></li>
+        <li><a href="../maestroConf.html">Ver Cuenta(Maestro)</a></li>
+        <li><a href="#">Salir</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 large-12 columns text-center">
+      <h1>Tighearnán Gafar Werner Chlodochar</h1>
+      <div>
+        <span class="secondary label">Cursos finalizados: 0</span>
+        <span class="secondary label">Cursos en progreso: 2</span>
+        <span class="secondary label">Cursos disponilbes: 4</span>
+      </div>
+      <div id='playereEIYJehWLCXH'></div>
+      <script type='text/javascript'>
+          jwplayer('playereEIYJehWLCXH').setup({
+              file: 'https://cdn.sublimevideo.net/vpa/ms_360p.mp4',
+              image: 'https://cdn.sublimevideo.net/vpa/ms_800.jpg',
+              title: 'Midnight Sun',
+              width: '80%',
+              aspectratio: '16:10'
+          });
+      </script>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 large-12 columns text-center">
+      <span class="primary label">Cursos disponibles</span>
+      <table max-width="600">
+        <thead>
+          <tr>
+            <th class="text-center" width="40%">Tipo</th>
+            <th class="text-center" width="40%">Horarios</th>
+            <th class="text-center" width="20%">Solicitar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Principiante</td>
+            <td>10:30 - 11:40</td>
+            <td><a href="#" class="button success radius tiny">Solicitar</a></td>
+          </tr>
+          <tr>
+            <td>Intermedio</td>
+            <td>13:00 - 14:15</td>
+            <td><a href="#" class="button success radius tiny">Solicitar</a></td>
+          </tr>
+          <tr>
+            <td>Avanzado</td>
+            <td>17:00 - 20:00</td>
+            <td><a href="#" class="button success radius tiny">Solicitar</a></td>
+          </tr>
+          <tr>
+            <td>Conversación</td>
+            <td>15:00 - 15:15</td>
+            <td><a href="#" class="button success radius tiny">Solicitar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 large-12 columns text-center">
+      <div class="panel radius">
+        Si te interesa puedes descargas la constancia de acreditación del maestro: <a href="#">constacia.pdf</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/vendor/jquery.js"></script>
+  <script src="../../js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
