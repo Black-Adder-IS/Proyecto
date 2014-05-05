@@ -22,6 +22,10 @@ public class ConexionBD {
     private String userName;
     private String password;
     
+    private final String SERVIDOR = "jdbc:mysql://127.0.0.1:3306/Escuela";
+    private final String USUARIO = "root";
+    private final String CONTRASENIA = "";
+    
     
     /**
      * Constructor de la clase
@@ -107,5 +111,39 @@ public class ConexionBD {
         finally {
             return resultado;
         }
+    }
+    
+    public Connection conectarBD(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection(SERVIDOR, USUARIO, CONTRASENIA);
+            return conexion;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public void desconectarBD(Connection conexion) {
+        try {
+            if( conexion != null && !conexion.isClosed() ) {
+                conexion.close();
+            }
+        } catch( SQLException e ) {
+            e.printStackTrace();
+        }
+    }
+    
+    public ResultSet consultar(Connection conexion, String query) {
+        ResultSet resultado = null;
+        try {
+            Statement st = conexion.createStatement();
+            resultado = st.executeQuery(query);
+        }
+        catch( Exception e ) {
+            e.printStackTrace();
+        }
+        return resultado;
     }
 }

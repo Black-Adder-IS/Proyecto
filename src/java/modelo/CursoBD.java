@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Statement;
 
 /**
  *
@@ -158,4 +159,118 @@ public class CursoBD extends ConexionBD{
         int resultado =  actualiza(conexion, consulta);
         return resultado != 0;
     }
+    
+    public boolean crear_curso(String correo, String tinicio, String tfinal, String tipo) {
+        String consulta = "SELECT * FROM `Escuela`.`Curso` WHERE `profesor_correo`='" + correo  +"' AND `curso_inicio`='" + tinicio + "' AND (`curso_estado`='Cursando' OR `curso_tipo`='" + tipo + "');";
+        String query = "INSERT INTO `Escuela`.`Curso` (`profesor_correo`, `estudiante_correo`, `curso_inicio`, `curso_final`, `curso_tipo`, "
+                + "`curso_estado`, `curso_nota`, `curso_calificacion`) VALUES ('" + correo + "', NULL, '" + tinicio + "', '" + tfinal
+                + "','" + tipo + "', 'Espera', NULL, NULL);";
+        boolean encontrado = false;
+               
+        Connection conexion = super.conectarBD();
+        ResultSet resultado = super.consultar(conexion, consulta);
+            
+        if (resultado == null) {
+            return false;
+        }
+        
+        try {
+            encontrado = resultado.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+                
+        if (encontrado) {
+            return false;
+        }
+        
+        try {
+            Statement st = conexion.createStatement();
+            st.executeUpdate(query);
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        super.desconectarBD(conexion);
+        return !encontrado;
+    }
+    
+    public boolean asignar_curso(String id, boolean asignar) {
+        String consulta = "SELECT `curso_estado` FROM `Escuela`.`Curso` WHERE `curso_id`='" + id  +"' AND `curso_estado`='Confirmando';";
+        String query = "";
+        if (asignar)
+            query = "UPDATE `Escuela`.`Curso` SET `curso_estado`='Cursando' WHERE `curso_id`='" + id + "';";
+        else
+            query = "UPDATE `Escuela`.`Curso` SET `curso_estado`='Espera', `estudiante_correo`=NULL WHERE `curso_id`='" + id + "';";
+        
+        Connection conexion = super.conectarBD();
+
+        try {
+            Statement st = conexion.createStatement();
+            st.execute(query);
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        super.desconectarBD(conexion);
+        return true;
+    }
+
+    public int eliminar_curso(String id) {
+        int ex = -1;
+        String query = "DELETE FROM `Escuela`.`Curso` WHERE `curso_id`='" + id + "';";
+        Connection conexion = null;
+        try {
+            conexion = super.conectarBD();
+            Statement st = conexion.createStatement();
+            ex = st.executeUpdate(query);
+            st.close();
+            super.desconectarBD(conexion);
+            return ex;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       
+        return ex;
+    }
+    
+    public boolean calificar_curso(String id, String calificacion, String nota) {
+        String query;
+        if (!nota.equals("")) {
+            query = "UPDATE `Escuela`.`Curso` SET `curso_calificacion`=" + Integer.parseInt(calificacion) + ", `curso_estado`='Terminado', `curso_nota`='" + nota + "'";
+            query += " WHERE `curso_id`='" + id + "';";
+        } else {
+            query = "UPDATE `Escuela`.`Curso` SET `curso_calificacion`=" + Integer.parseInt(calificacion) + ", `curso_estado`='Terminado'";
+            query += " WHERE `curso_id`='" + id + "';";
+        }
+        
+        Connection conexion = super.conectarBD();
+        try {
+            Statement st = conexion.createStatement();
+            st.execute(query);
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        super.desconectarBD(conexion);
+        return true;
+    }
+    
+    public ResultSet consulta(String query) {
+        Connection conexion = super.conectarBD();
+        ResultSet rs = super.consultar(conexion, query);
+        return rs;
+    }
+    
 }

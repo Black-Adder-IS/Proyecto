@@ -2389,7 +2389,7 @@ ul.pagination {
     ul.pagination li a {
       display: block;
       padding: 0.0625rem 0.625rem 0.0625rem;
-      color: #999999;
+      color: #eee;
       -webkit-border-radius: 3px;
       border-radius: 3px; }
     ul.pagination li:hover a,
@@ -3373,12 +3373,12 @@ dialog[open] {
     font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 0.875rem;
-    color: #999999; }
+    color: #eee; }
     .sub-nav dt a,
     .sub-nav dd a,
     .sub-nav li a {
       text-decoration: none;
-      color: #999999;
+      color: #eee;
       padding: 0.1875rem 1rem; }
       .sub-nav dt a:hover,
       .sub-nav dd a:hover,

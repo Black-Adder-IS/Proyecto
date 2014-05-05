@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*   
+    Created on : 4/05/2014, 08:01:30 PM
+    Author     : sainoba
+*/
+ 
+body {
+        background: url(../images/background5-blur.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        padding-top: 10px;
+}
+
+h1 {
+    color: white;
+}
