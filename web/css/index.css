@@ -68,3 +68,12 @@ box-shadow: 0 0 3px 0 rgba(255,255,255,0.2);
 .menu_button{
     font-size: 12px !important; 
 }
+
+.alerta {
+    top: 0;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}

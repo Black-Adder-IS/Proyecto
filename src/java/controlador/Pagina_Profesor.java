@@ -67,6 +67,7 @@ out.println("  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/
 out.println("  <script src='js/solicitar_curso.js'></script>");
 out.println("  <script src='js/generador_menu_index.js'></script> ");
 out.println("  <script src='js/inicio_sesion.js'></script></script> ");
+out.println("  <script src='js/mensajes_alerta.js'></script> ");
 out.println("  <script src='//cdn.sublimevideo.net/js/x9bc50rn.js' type='text/javascript'></script>");
 out.println("</head>");
 out.println("<body>");

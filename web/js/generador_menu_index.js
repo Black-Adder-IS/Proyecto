@@ -15,6 +15,7 @@ $( document ).ready(function() {
         menu.html('');
         f_index = profundidad === 0 ? "":"../../";
         f_html = profundidad === 0 ? "html/":"";
+        menu.append('<li><a class="button alert tiny menu_button" href="./">Inicio</a></li>');
         menu.append('<li><a class="button alert tiny menu_button" href="'+f_html+'horarios.html">Horarios</a></li>');
         menu.append('<li><a class="button alert tiny menu_button" href="'+f_html+'profesores.html">Profesores</a></li>');
         menu.append('<li></br></li>');
@@ -23,12 +24,12 @@ $( document ).ready(function() {
             menu.append('<li><a class="button alert tiny menu_button" href="#" data-reveal-id="myModal" data-reveal>Registrar</a></li>');
         }else{
           if(localStorage.tipo === "profesor"){
-            menu.append('<li><a class="button alert tiny menu_button" href="'+f_html+'maestroConf.html">Cuenta</a></li>');
+            menu.append('<li><a class="button alert tiny menu_button" href="'+f_index+'profesorConf.html">Cuenta</a></li>');
           }
           if(localStorage.tipo === "estudiante"){
-            menu.append('<li><a class="button alert tiny menu_button" href="'+f_html+'alumnoConf.html">Ver Cuenta</a></li>');
+            menu.append('<li><a class="button alert tiny menu_button" href="'+f_index+'estudianteConf.html">Cuenta</a></li>');
           }
-          menu.append('<li><a class="button alert tiny menu_button" id="cerrar_sesion_btn" href="#">Cerrar sesión</a></li>');
+          menu.append('<li><a class="button alert tiny menu_button" id="cerrar_sesion_btn" href="#">Salir</a></li>');
         }
         
         

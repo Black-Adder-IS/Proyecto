@@ -4109,6 +4109,7 @@ label {
   line-height: 1.5;
   margin-bottom: 0;
   /* Styles for required inputs */ }
+
   label.right {
     float: none;
     text-align: right; }
@@ -4118,6 +4119,10 @@ label {
   label small {
     text-transform: capitalize;
     color: #676767; }
+
+  .iluminado{
+      color: #eee;
+  }
 
 select {
   -webkit-appearance: none !important;
